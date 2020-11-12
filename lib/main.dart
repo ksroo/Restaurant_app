@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant_app/tips/getStart.dart';
 import 'package:restaurant_app/tips/tips.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'package:restaurant_app/pages/config.dart';
@@ -23,10 +24,10 @@ class _SplashState extends State<SplashApp> {
     return SplashScreen(
       seconds: 14,
       routeName: '/',
-      navigateAfterSeconds: new Tips(),
+      navigateAfterSeconds: new GetStart(),
       title: new Text(
         'Welcome In SplashScreen',
-        style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+        style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0,color: Colors.white),
       ),
       image: new Image.network(
           'https://flutter.io/images/catalog-widget-placeholder.png'),
