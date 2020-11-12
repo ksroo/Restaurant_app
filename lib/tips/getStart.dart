@@ -25,6 +25,7 @@ class _GetStartState extends State<GetStart> {
             ),
             Container(
               height: myheight,
+              padding: EdgeInsets.all(10.0),
               decoration: BoxDecoration(
                   color: primeryColor,
                   boxShadow: [
@@ -62,10 +63,24 @@ class _GetStartState extends State<GetStart> {
                           fontSize: 16,
                         ),
                       ),
-                      GestureDetector(
-                        onTap: () {},
-                        child: Container(
-                          child: Text("أبدا من هنا"),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 20.0),
+                        child: GestureDetector(
+                          onTap: () {},
+                          child: Container(
+                            padding: EdgeInsets.only(
+                                left: 30.0, right: 30.0, bottom: 7.0, top: 7.0),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            child: Text(
+                              "أبدا من هنا",
+                              style: TextStyle(
+                                fontSize: 20,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ],
