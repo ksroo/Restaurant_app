@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:restaurant_app/pages/config.dart';
+import 'package:restaurant_app/tips/tips.dart';
 
 class GetStart extends StatefulWidget {
   @override
@@ -66,7 +67,11 @@ class _GetStartState extends State<GetStart> {
                       Padding(
                         padding: const EdgeInsets.only(top: 20.0),
                         child: GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                               Navigator.push(context, MaterialPageRoute(builder: (context){
+                                return Tips();
+                            }));
+                          },
                           child: Container(
                             padding: EdgeInsets.only(
                                 left: 30.0, right: 30.0, bottom: 7.0, top: 7.0),
