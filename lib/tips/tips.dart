@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:page_indicator/page_indicator.dart';
+import 'package:restaurant_app/pages/config.dart';
 import 'package:restaurant_app/pages/config.dart';
 
 class Tips extends StatefulWidget {
@@ -9,8 +12,22 @@ class Tips extends StatefulWidget {
 
 class _TipsState extends State<Tips> {
   var myarr = [
-    
-  ]
+    {
+      "title": "ابحث عن المأكولات التي تحبها",
+      "info": "افضل الاطعمه تجدها في التطبيق منهنا يمكنك البدء",
+      "image": "images/tip1.png",
+    },
+    {
+      "title": "ابحث عن المأكولات التي تحبها",
+      "info": "افضل الاطعمه تجدها في التطبيق منهنا يمكنك البدء",
+      "image": "images/tip2.png",
+    },
+    {
+      "title": "ابحث عن المأكولات التي تحبها",
+      "info": "افضل الاطعمه تجدها في التطبيق منهنا يمكنك البدء",
+      "image": "images/tip3.png",
+    },
+  ];
   @override
   Widget build(BuildContext context) {
     double myheight = MediaQuery.of(context).size.height / 5;
@@ -20,69 +37,77 @@ class _TipsState extends State<Tips> {
           children: [
             Container(
               height: myheight * 4,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                image: DecorationImage(
-                    image: AssetImage("images/tip3.png"), fit: BoxFit.contain),
+              child: PageIndicatorContainer(
+                shape: IndicatorShape.circle(),
+                length: myarr.length,
+                align: IndicatorAlign.bottom,
+                indicatorColor: Colors.white,
+                indicatorSelectorColor: Colors.purple,
+                child: PageView.builder(
+                    physics: AlwaysScrollableScrollPhysics(),
+                    scrollDirection: Axis.horizontal,
+                    itemCount: myarr.length,
+                    itemBuilder: (BuildContext context, i) {
+                      return SingleTips(
+                        title: myarr[i]["title"],
+                        info: myarr[i]["info"],
+                        image: myarr[i]["image"],
+                      );
+                    }),
               ),
             ),
             Container(
               height: myheight,
               padding: EdgeInsets.all(10.0),
-              decoration: BoxDecoration(
-                  color: primeryColor,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 5,
-                      blurRadius: 7,
-                      offset: Offset(0, 3),
-                    ),
-                  ],
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20))),
               child: ListView(
                 children: [
                   Column(
                     textDirection: TextDirection.rtl,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(
-                        "اشهي المأكولات",
-                        textAlign: TextAlign.right,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        "أفضل المأكولات تجدونها في مطعمنا العديد من المأكولات لدينا",
-                        textAlign: TextAlign.right,
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 16,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 20.0),
-                        child: GestureDetector(
-                          onTap: () {},
-                          child: Container(
-                            padding: EdgeInsets.only(
-                                left: 30.0, right: 30.0, bottom: 7.0, top: 7.0),
-                            decoration: BoxDecoration(
+                      MaterialButton(
+                        onPressed: () {},
+                        child: Container(
+                          alignment: Alignment.center,
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15.0),
+                            color: Colors.red,
+                          ),
+                          child: Text(
+                            "أنشاء حساب",
+                            style: TextStyle(
                               color: Colors.white,
-                              borderRadius: BorderRadius.circular(20.0),
+                              fontSize: 20.0,
                             ),
-                            child: Text(
-                              "أبدا من هنا",
-                              style: TextStyle(
-                                fontSize: 20,
+                          ),
+                        ),
+                      ),
+                      MaterialButton(
+                        onPressed: () {},
+                        child: Container(
+                          alignment: Alignment.center,
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15.0),
+                            color: Colors.grey,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                            FaIcon(
+                                FontAwesomeIcons.facebook, size: 20.0,color: Color(0xff01168c),
                               ),
-                            ),
+                              SizedBox(width: 10,),
+                              Text(
+                                "متابعه باستخدام فيس بوك",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20.0,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -94,6 +119,49 @@ class _TipsState extends State<Tips> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class SingleTips extends StatelessWidget {
+  final String title;
+  final String info;
+  final String image;
+
+  SingleTips({this.title, this.info, this.image});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Expanded(
+          child: Container(
+            alignment: Alignment.center,
+            child: Image.asset(
+              image,
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.all(5),
+          child: Text(
+            title,
+            style: TextStyle(
+                color: Colors.red, fontSize: 24.0, fontWeight: FontWeight.bold),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(bottom: 70.0),
+          child: Text(
+            info,
+            style: TextStyle(
+                color: Colors.grey,
+                fontSize: 16.0,
+                fontWeight: FontWeight.bold),
+          ),
+        ),
+      ],
     );
   }
 }
