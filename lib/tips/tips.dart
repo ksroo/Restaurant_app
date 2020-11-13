@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:page_indicator/page_indicator.dart';
+import 'package:restaurant_app/account/register.dart';
 import 'package:restaurant_app/pages/config.dart';
 import 'package:restaurant_app/pages/config.dart';
 
@@ -30,11 +31,25 @@ class _TipsState extends State<Tips> {
   ];
   @override
   Widget build(BuildContext context) {
-    double myheight = MediaQuery.of(context).size.height / 5;
+    double myheight = MediaQuery.of(context).size.height / 6;
     return Scaffold(
       body: Container(
         child: Column(
           children: [
+            Container(
+              alignment: Alignment.bottomRight,
+              padding: EdgeInsets.only(top: 40.0,right: 30.0),
+              child: GestureDetector(
+                child: Text(
+                  "دخول",
+                  style: TextStyle(
+                    fontSize: 22.0,
+                    color: Color(0xffba0955),
+
+                  ),
+                ),
+              ),
+            ),
             Container(
               height: myheight * 4,
               child: PageIndicatorContainer(
@@ -42,7 +57,7 @@ class _TipsState extends State<Tips> {
                 length: myarr.length,
                 align: IndicatorAlign.bottom,
                 indicatorColor: Colors.white,
-                indicatorSelectorColor: Colors.purple,
+                indicatorSelectorColor: Color(0xffba0955),
                 child: PageView.builder(
                     physics: AlwaysScrollableScrollPhysics(),
                     scrollDirection: Axis.horizontal,
@@ -56,64 +71,67 @@ class _TipsState extends State<Tips> {
                     }),
               ),
             ),
-            Container(
-              height: myheight,
-              padding: EdgeInsets.all(10.0),
-              child: ListView(
-                children: [
-                  Column(
-                    textDirection: TextDirection.rtl,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      MaterialButton(
-                        onPressed: () {},
-                        child: Container(
-                          alignment: Alignment.center,
-                          width: MediaQuery.of(context).size.width,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15.0),
-                            color: Colors.red,
-                          ),
-                          child: Text(
-                            "أنشاء حساب",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20.0,
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.all(10.0),
+                child: ListView(
+                  children: [
+                    Column(
+                      textDirection: TextDirection.rtl,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        MaterialButton(
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => Register()));
+                          },
+                          child: Container(
+                            alignment: Alignment.center,
+                            width: MediaQuery.of(context).size.width,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15.0),
+                              color: Color(0xffba0955),
+                            ),
+                            child: Text(
+                              "أنشاء حساب",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20.0,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      MaterialButton(
-                        onPressed: () {},
-                        child: Container(
-                          alignment: Alignment.center,
-                          width: MediaQuery.of(context).size.width,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15.0),
-                            color: Colors.grey,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                            FaIcon(
-                                FontAwesomeIcons.facebook, size: 20.0,color: Color(0xff01168c),
-                              ),
-                              SizedBox(width: 10,),
-                              Text(
-                                "متابعه باستخدام فيس بوك",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 20.0,
+                        MaterialButton(
+                          onPressed: () {},
+                          child: Container(
+                            alignment: Alignment.center,
+                            width: MediaQuery.of(context).size.width,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15.0),
+                              color: Colors.grey,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                              FaIcon(
+                                  FontAwesomeIcons.facebook, size: 20.0,color: Color(0xff01168c),
                                 ),
-                              ),
-                            ],
+                                SizedBox(width: 10,),
+                                Text(
+                                  "متابعه باستخدام فيس بوك",
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 20.0,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ],

@@ -21,7 +21,10 @@ class _GetStartState extends State<GetStart> {
               decoration: BoxDecoration(
                 color: Colors.white,
                 image: DecorationImage(
-                    image: AssetImage("images/tip0.png"), fit: BoxFit.contain),
+
+                  image: AssetImage("images/tip0.png"),
+                  fit: BoxFit.contain,
+                ),
               ),
             ),
             Container(
@@ -68,8 +71,9 @@ class _GetStartState extends State<GetStart> {
                         padding: const EdgeInsets.only(top: 20.0),
                         child: GestureDetector(
                           onTap: () {
-                               Navigator.push(context, MaterialPageRoute(builder: (context){
-                                return Tips();
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return Tips();
                             }));
                           },
                           child: Container(
