@@ -60,6 +60,33 @@ class _RegisterState extends State<Register> {
                           hintText: "الاسم الكامل",
                           border: InputBorder.none,
                         ),
+                        validator: (String value)
+                        {
+                          if(value.isEmpty || value.length < 1)
+                            {
+                              return "الرجاء ادخال الاسم الكامل";
+                            }
+                        },
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(left: 30.0, right: 30.0),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(25.0),
+                      ),
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          hintText: "الاسم الكامل",
+                          border: InputBorder.none,
+                        ),
+                        validator: (String value)
+                        {
+                          if(value.isEmpty || value.length < 1)
+                          {
+                            return "الرجاء ادخال الاسم الكامل";
+                          }
+                        },
                       ),
                     ),
                   ],
