@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:page_indicator/page_indicator.dart';
+import 'package:restaurant_app/account/login.dart';
 import 'package:restaurant_app/account/register.dart';
 import 'package:restaurant_app/pages/config.dart';
 import 'package:restaurant_app/pages/config.dart';
@@ -40,6 +41,9 @@ class _TipsState extends State<Tips> {
               alignment: Alignment.bottomRight,
               padding: EdgeInsets.only(top: 40.0,right: 30.0),
               child: GestureDetector(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
+                },
                 child: Text(
                   "دخول",
                   style: TextStyle(

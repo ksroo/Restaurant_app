@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:restaurant_app/account/register.dart';
+import 'package:restaurant_app/home/home.dart';
 
 import 'forgetPassword.dart';
 
@@ -127,7 +128,9 @@ class _LoginState extends State<Login> {
                         height: 20.0,
                       ),
                       MaterialButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+                        },
                         child: Container(
                             alignment: Alignment.center,
                             width: MediaQuery.of(context).size.width,
