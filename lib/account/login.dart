@@ -1,14 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:restaurant_app/account/register.dart';
 
-import 'login.dart';
+import 'forgetPassword.dart';
 
-class Register extends StatefulWidget {
+class Login extends StatefulWidget {
   @override
-  _RegisterState createState() => _RegisterState();
+  _LoginState createState() => _LoginState();
 }
 
-class _RegisterState extends State<Register> {
+class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +37,7 @@ class _RegisterState extends State<Register> {
                     children: [
                       Container(
                         child: Text(
-                          "انشاء حساب",
+                          "سجل الدخول ",
                           style: TextStyle(
                               fontSize: 25.0,
                               color: Color(0xffba0955),
@@ -46,30 +47,11 @@ class _RegisterState extends State<Register> {
                       Container(
                         margin: EdgeInsets.only(bottom: 30),
                         child: Text(
-                          "جديد",
+                          " الي حسابك",
                           style: TextStyle(
                               fontSize: 25.0,
                               color: Color(0xffba0955),
                               fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(left: 20, right: 20),
-                        padding: EdgeInsets.only(left: 30.0, right: 30.0),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(25.0),
-                        ),
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            hintText: "الاسم الكامل",
-                            border: InputBorder.none,
-                          ),
-                          validator: (String value) {
-                            if (value.isEmpty || value.length < 1) {
-                              return "الرجاء ادخال الاسم الكامل";
-                            }
-                          },
                         ),
                       ),
                       SizedBox(
@@ -106,41 +88,40 @@ class _RegisterState extends State<Register> {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(25.0),
                         ),
-                        child: TextFormField(
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            hintText: "كلمه السر",
-                            border: InputBorder.none,
-                          ),
-                          validator: (String value) {
-                            if (value.isEmpty || value.length < 6) {
-                              return "الرجاء ادخال كلمه السر";
-                            }
-                          },
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: TextFormField(
+                                obscureText: true,
+                                decoration: InputDecoration(
+                                  hintText: "كلمه السر",
+                                  border: InputBorder.none,
+                                ),
+                                validator: (String value) {
+                                  if (value.isEmpty || value.length < 6) {
+                                    return "الرجاء ادخال كلمه السر";
+                                  }
+                                },
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: (){
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => ForgetPassword()));
+                              },
+                              child: Text(
+
+                                " نسيت ؟",
+                                style: TextStyle(
+                                    color: Colors.blue,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                       SizedBox(
                         height: 10,
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(left: 20, right: 20),
-                        padding: EdgeInsets.only(left: 30.0, right: 30.0),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(25.0),
-                        ),
-                        child: TextFormField(
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                            hintText: "رقم الهاتف",
-                            border: InputBorder.none,
-                          ),
-                          validator: (String value) {
-                            if (value.isEmpty || value.length < 7) {
-                              return "الرجاء ادخال رقم الهاتف";
-                            }
-                          },
-                        ),
                       ),
                       SizedBox(
                         height: 20.0,
@@ -151,7 +132,7 @@ class _RegisterState extends State<Register> {
                             alignment: Alignment.center,
                             width: MediaQuery.of(context).size.width,
                             child: Text(
-                              "تسجيل",
+                              "دخول",
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 24,
@@ -164,12 +145,6 @@ class _RegisterState extends State<Register> {
                               borderRadius: BorderRadius.circular(25.0),
                             )),
                       ),
-                      Container(
-                        margin: EdgeInsets.only(top: 5),
-                        alignment: Alignment.center,
-                        child: Text(
-                            "عند الضغط علي الشروط و الاحكام انت توافق علي قوانين التطبيق",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),),
-                      ),
                     ],
                   ),
                 ),
@@ -180,17 +155,28 @@ class _RegisterState extends State<Register> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "  اذا لديك حساب سجل الدخول ؟",
-                      style: TextStyle(color: Colors.black, fontSize: 16,fontWeight: FontWeight.bold),
+                      "اذا ليس لديك حساب سجل من هنا ؟",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(width: 20,),
+                    SizedBox(
+                      width: 20,
+                    ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Register()));
                       },
                       child: Text(
-                        "دخول",
-                        style: TextStyle(color: Color(0xffba0955), fontSize: 18,fontWeight: FontWeight.bold),
+                        "تسجيل جديد",
+                        style: TextStyle(
+                            color: Color(0xffba0955),
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                   ],
