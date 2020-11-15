@@ -52,7 +52,9 @@ class _HomeState extends State<Home> {
                     Icons.menu,
                     color: Color(0xffba0955),
                   ),
-                  SizedBox(width: 10,),
+                  SizedBox(
+                    width: 10,
+                  ),
                   Expanded(
                     child: Container(
                       padding: EdgeInsets.only(right: 10),
@@ -72,9 +74,44 @@ class _HomeState extends State<Home> {
                 ],
               ),
             ),
+            Container(
+              child: SingleCategory(
+                cat_id: "1",
+                cat_image: "images/category/cat1.png",
+                cat_name: "category1",
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 }
+
+
+class SingleCategory extends StatelessWidget {
+  final String cat_id;
+  final String cat_name;
+  final String cat_image;
+
+  SingleCategory({this.cat_id, this.cat_image, this.cat_name});
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(25),
+            color: Color(0xffba0955),
+          ),
+          child: Image.asset(cat_image),
+        ),
+        Text(
+          cat_name,
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+      ],
+    );
+  }
+}
+
