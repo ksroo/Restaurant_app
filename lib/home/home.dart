@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:restaurant_app/drawer/mydrawer.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -7,6 +8,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  GlobalKey<ScaffoldState> _keyDrawer = GlobalKey<ScaffoldState>();
   var myarr_product = [
     {
       "pro_id": "1",
@@ -82,126 +84,135 @@ class _HomeState extends State<Home> {
   ];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Directionality(
-        textDirection: TextDirection.rtl,
-        child: Column(
-          children: [
-            Container(
-              alignment: Alignment.bottomRight,
-              margin: EdgeInsets.only(top: 30.0),
-              padding: EdgeInsets.only(right: 15),
-              child: Text(
-                "توصيل الطب الي",
-                style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-            Row(
-              children: [
-                Container(
-                  padding: EdgeInsets.only(right: 15),
-                  child: Text(
-                    "موقع الزبون",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                  ),
+    return Container(
+      child: Scaffold(
+        key: _keyDrawer,
+        endDrawer: MyDrawer(),
+        body: Directionality(
+          textDirection: TextDirection.rtl,
+          child: Column(
+            children: [
+              Container(
+                alignment: Alignment.bottomRight,
+                margin: EdgeInsets.only(top: 30.0),
+                padding: EdgeInsets.only(right: 15),
+                child: Text(
+                  "توصيل الطب الي",
+                  style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold),
                 ),
-                IconButton(
-                    icon: Icon(
-                      Icons.arrow_drop_down,
-                      color: Color(0xffba0955),
-                      size: 30,
-                    ),
-                    onPressed: () {}),
-              ],
-            ),
-            Container(
-              padding: EdgeInsets.all(15),
-              child: Row(
+              ),
+              Row(
                 children: [
-                  Icon(
-                    Icons.menu,
-                    color: Color(0xffba0955),
-                    size: 40,
+                  Container(
+                    padding: EdgeInsets.only(right: 15),
+                    child: Text(
+                      "موقع الزبون",
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
                   ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(
-                    child: Container(
-                      padding: EdgeInsets.only(right: 10),
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade300,
-                        borderRadius: BorderRadius.circular(25),
+                  IconButton(
+                      icon: Icon(
+                        Icons.arrow_drop_down,
+                        color: Color(0xffba0955),
+                        size: 30,
                       ),
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "بحث",
-                          suffixIcon: Icon(Icons.search),
+                      onPressed: () {}),
+                ],
+              ),
+              Container(
+                padding: EdgeInsets.all(15),
+                child: Row(
+                  children: [
+                    GestureDetector(
+                      onTap: (){
+                        _keyDrawer.currentState.openEndDrawer();
+                      },
+                      child: Icon(
+                        Icons.menu,
+                        color: Color(0xffba0955),
+                        size: 40,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.only(right: 10),
+                        decoration: BoxDecoration(
+                          color: Colors.grey.shade300,
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: "بحث",
+                            suffixIcon: Icon(Icons.search),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: 110.0,
-              child: ListView.builder(
-                  itemCount: myarr_category.length,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (BuildContext context, int index) {
-                    return SingleCategory(
-                      cat_id: myarr_category[index]["cat_id"],
-                      cat_image: myarr_category[index]["cat_image"],
-                      cat_name: myarr_category[index]["cat_name"],
-                    );
-                  }),
-            ),
-            Container(
-              height: 320,
-              width: MediaQuery.of(context).size.width,
-              child: ListView.builder(
-                  itemCount: myarr_product.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return SingleProduct(
-                      pro_id: myarr_product[index]["pro_id"],
-                      pro_image: myarr_product[index]["pro_image"],
-                      pro_name: myarr_product[index]["pro_name"],
-                      pro_desc: myarr_product[index]["pro_desc"],
-                    );
-                  }),
-            ),
-          ],
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: 110.0,
+                child: ListView.builder(
+                    itemCount: myarr_category.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (BuildContext context, int index) {
+                      return SingleCategory(
+                        cat_id: myarr_category[index]["cat_id"],
+                        cat_image: myarr_category[index]["cat_image"],
+                        cat_name: myarr_category[index]["cat_name"],
+                      );
+                    }),
+              ),
+              Container(
+                height: 320,
+                width: MediaQuery.of(context).size.width,
+                child: ListView.builder(
+                    itemCount: myarr_product.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return SingleProduct(
+                        pro_id: myarr_product[index]["pro_id"],
+                        pro_image: myarr_product[index]["pro_image"],
+                        pro_name: myarr_product[index]["pro_name"],
+                        pro_desc: myarr_product[index]["pro_desc"],
+                      );
+                    }),
+              ),
+            ],
+          ),
         ),
+        // down bar
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex:0,
+          selectedItemColor: Color(0xffba0955),
+          selectedFontSize: 14,
+          unselectedItemColor: Colors.grey,
+          unselectedFontSize: 12,
+          showSelectedLabels: true,
+          type: BottomNavigationBarType.fixed ,
+          items: [
+            BottomNavigationBarItem(
+                icon: Icon(Icons.notifications,size: 28,),
+              title: Text("الاشعارات"),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.restaurant,size: 28,),
+              title: Text("العروض"),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person,size: 28,),
+              title: Text("حسابي"),
+            ),
+          ]),
       ),
-      // down bar
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex:0,
-        selectedItemColor: Color(0xffba0955),
-        selectedFontSize: 14,
-        unselectedItemColor: Colors.grey,
-        unselectedFontSize: 12,
-        showSelectedLabels: true,
-        type: BottomNavigationBarType.fixed ,
-        items: [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.notifications,size: 28,),
-            title: Text("الاشعارات"),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.restaurant,size: 28,),
-            title: Text("العروض"),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person,size: 28,),
-            title: Text("حسابي"),
-          ),
-        ]),
     );
   }
 }
