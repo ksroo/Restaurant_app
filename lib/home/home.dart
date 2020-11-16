@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:restaurant_app/drawer/mydrawer.dart';
+import 'package:restaurant_app/product/product_detail.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -227,29 +228,34 @@ class SingleProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(10),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height / 4,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                image: DecorationImage(
-                    fit: BoxFit.cover, image: AssetImage(pro_image))),
-          ),
-          Text(
-            pro_name,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-          ),
-          Text(
-            pro_desc,
-            style: TextStyle(color: Colors.grey),
-          ),
-        ],
+    return GestureDetector(
+       onTap: (){
+         Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetail()));
+       },
+      child: Container(
+        padding: EdgeInsets.all(10),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height / 4,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  image: DecorationImage(
+                      fit: BoxFit.cover, image: AssetImage(pro_image))),
+            ),
+            Text(
+              pro_name,
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
+            Text(
+              pro_desc,
+              style: TextStyle(color: Colors.grey),
+            ),
+          ],
+        ),
       ),
     );
   }
