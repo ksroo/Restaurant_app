@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -27,11 +28,14 @@ class _ProductDetailState extends State<ProductDetail> {
                 borderRadius: BorderRadius.circular(15),
               ),
               child: IconButton(
+
                 icon: Icon(
                   Icons.arrow_back_ios,
                   color: Color(0xffba0955),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
               )),
 
           Expanded(child: Text("")),
@@ -149,18 +153,112 @@ class _ProductDetailState extends State<ProductDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: ListView(
-        children: [
-          headerBuild(),
-          imageProduct(),
-          Container(
-            child: Column(
-              children: [
-                Text("سمك مشوي",style: TextStyle(fontSize: 20,),),
-              ],
+      body: Directionality(
+        textDirection: TextDirection.rtl,
+        child: ListView(
+          children: [
+            headerBuild(),
+            imageProduct(),
+            Container(
+              padding: EdgeInsets.all(25.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "سمك مشوي",
+                    style: TextStyle(
+                      fontSize: 25,
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.favorite,
+                        color: Colors.red,
+                      ),
+                      Text("5"),
+                      Expanded(
+                        child: Text(""),
+                      ),
+                      Icon(
+                        Icons.star,
+                        color: Colors.orange,
+                      ),
+                      Text(
+                        "5 review",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                    ],
+                  ),
+                  Padding(padding: EdgeInsets.only(bottom: 15.0)),
+                  Text(
+                    "سمك مشوي سمك مشوي سمك مشوي سمك مشوي سمك مشوي سمك مشوي سمك مشوي ",
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
+      ),
+      bottomNavigationBar: Container(
+        child: Row(
+          children: [
+            Text(
+              "1500",
+              style: TextStyle(
+                  fontSize: 30,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold),
+            ),
+            Expanded(
+              child: Text(""),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.red[200],
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey[100],
+                    spreadRadius: 1,
+                    blurRadius: 1,
+                    offset: Offset(0, 1),
+                  ),
+                ],
+                borderRadius: BorderRadius.circular(40),
+              ),
+              margin: EdgeInsets.all(5),
+              padding: EdgeInsets.all(10),
+              child: Text(
+                "اضافة الي السلة",
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+            ),
+            Container(
+              child: Icon(
+                Icons.shopping_basket,
+                color: Colors.white,
+              ),
+            ),
+          ],
+        ),
+        padding: EdgeInsets.only(left: 50, right: 30),
+        height: 75.0,
+        decoration: BoxDecoration(
+          color: Colors.red[300],
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey[100],
+              spreadRadius: 7,
+              blurRadius: 4,
+              offset: Offset(0, 3),
+            ),
+          ],
+          borderRadius: BorderRadius.circular(40),
+        ),
       ),
     );
   }
