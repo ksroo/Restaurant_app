@@ -11,17 +11,18 @@ class GetStart extends StatefulWidget {
 class _GetStartState extends State<GetStart> {
   @override
   Widget build(BuildContext context) {
-    double myheight = MediaQuery.of(context).size.height / 3;
+   double myheight =  MediaQuery.of(context).size.height / 3;
     return Scaffold(
       body: Container(
+
         child: Column(
           children: [
             Container(
+
               height: myheight * 2,
               decoration: BoxDecoration(
                 color: Colors.white,
                 image: DecorationImage(
-
                   image: AssetImage("images/tip0.png"),
                   fit: BoxFit.contain,
                 ),

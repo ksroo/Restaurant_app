@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:restaurant_app/shopping/shopping.dart';
 
 class ProductDetail extends StatefulWidget {
   @override
@@ -28,7 +29,6 @@ class _ProductDetailState extends State<ProductDetail> {
                 borderRadius: BorderRadius.circular(15),
               ),
               child: IconButton(
-
                 icon: Icon(
                   Icons.arrow_back_ios,
                   color: Color(0xffba0955),
@@ -59,7 +59,9 @@ class _ProductDetailState extends State<ProductDetail> {
                   Icons.shopping_cart,
                   color: Color(0xffba0955),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Shopping()));
+                },
               )),
         ],
       ),
@@ -68,7 +70,7 @@ class _ProductDetailState extends State<ProductDetail> {
 
   Widget imageProduct() {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: EdgeInsets.only(bottom: 10.0),
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
@@ -155,51 +157,61 @@ class _ProductDetailState extends State<ProductDetail> {
       backgroundColor: Colors.white,
       body: Directionality(
         textDirection: TextDirection.rtl,
-        child: ListView(
+        child: Stack(
           children: [
-            headerBuild(),
-            imageProduct(),
-            Container(
-              padding: EdgeInsets.all(25.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "سمك مشوي",
-                    style: TextStyle(
-                      fontSize: 25,
-                    ),
-                  ),
-                  Row(
+            ListView(
+              children: [
+                imageProduct(),
+                Container(
+                  padding: EdgeInsets.all(25.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Icon(
-                        Icons.favorite,
-                        color: Colors.red,
-                      ),
-                      Text("5"),
-                      Expanded(
-                        child: Text(""),
-                      ),
-                      Icon(
-                        Icons.star,
-                        color: Colors.orange,
-                      ),
                       Text(
-                        "5 review",
-                        style: TextStyle(fontSize: 16),
+                        "سمك مشوي",
+                        style: TextStyle(
+                          fontSize: 25,
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.favorite,
+                            color: Colors.red,
+                          ),
+                          Text("5"),
+                          Expanded(
+                            child: Text(""),
+                          ),
+                          Icon(
+                            Icons.star,
+                            color: Colors.orange,
+                          ),
+                          Text(
+                            "5 review",
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        ],
+                      ),
+                      Padding(padding: EdgeInsets.only(bottom: 15.0)),
+                      Text(
+                        "سمك مشوي سمك مشوي سمك مشوي سمك مشوي سمك مشوي سمك مشوي سمك مشوي سمك مشوي سمك مشوي سمك مشوي سمك مشوي سمك مشوي سمك مشوي سمك مشوي سمك مشوي سمك مشوي سمك مشوي سمك مشوي سمك مشوي سمك مشوي ",
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.grey,
+                        ),
                       ),
                     ],
                   ),
-                  Padding(padding: EdgeInsets.only(bottom: 15.0)),
-                  Text(
-                    "سمك مشوي سمك مشوي سمك مشوي سمك مشوي سمك مشوي سمك مشوي سمك مشوي ",
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey,
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
+            ),
+            Positioned(
+              top: 0.0,
+              left: 0.0,
+              right: 0.0,
+              height: 120,
+              child: headerBuild(),
             ),
           ],
         ),
@@ -231,7 +243,7 @@ class _ProductDetailState extends State<ProductDetail> {
                 borderRadius: BorderRadius.circular(40),
               ),
               margin: EdgeInsets.all(5),
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.only(left: 10,right: 10),
               child: Text(
                 "اضافة الي السلة",
                 style: TextStyle(color: Colors.white, fontSize: 20),
@@ -248,7 +260,16 @@ class _ProductDetailState extends State<ProductDetail> {
         padding: EdgeInsets.only(left: 50, right: 30),
         height: 75.0,
         decoration: BoxDecoration(
-          color: Colors.red[300],
+         //color: Colors.red[300],
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: <Color>[
+                Colors.red,
+                Colors.red[300],
+                Colors.red[300],
+                Colors.red,
+              ]),
           boxShadow: [
             BoxShadow(
               color: Colors.grey[100],
