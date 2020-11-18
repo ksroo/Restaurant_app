@@ -78,7 +78,7 @@ class _ShoppingState extends State<Shopping> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey[200],
       body: Directionality(
         textDirection: TextDirection.rtl,
         child: Stack(
@@ -102,70 +102,25 @@ class _ShoppingState extends State<Shopping> {
               top: 0.0,
               left: 0.0,
               right: 0.0,
-              height: 120,
+              height: 110,
               child: headerBuild(),
             ),
           ],
         ),
       ),
       bottomNavigationBar: Container(
-        child: Row(
-          children: [
-            Text(
-              "1000",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold),
-            ),
-            Padding(
-              padding: EdgeInsets.all(4),
-            ),
-            Text(
-              "المجموع",
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
-            Expanded(child: Text("")),
-            GestureDetector(
-               onTap: (){},
-              child: Row(
-                children: [
-                  Text(
-                    "اضافة الي السلة",
-                    style: TextStyle(color: Colors.white, fontSize: 24),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(4),
-                  ),
-                  Icon(
-                    Icons.add_shopping_cart,
-                    color: Colors.white,
-                  ),
-                ],
-              ),
-            ),
-          ],
+        alignment: Alignment.center,
+        child: GestureDetector(
+          onTap: () {},
+          child: Text(
+            "اضافة الي السلة",
+            style: TextStyle(color: Colors.white, fontSize: 24),
+          ),
         ),
-        padding: EdgeInsets.only(left: 50, right: 30),
-        height: 75.0,
+        height: 50.0,
         decoration: BoxDecoration(
-          //color: Colors.red[300],
-          gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: <Color>[
-                Colors.red,
-                Colors.red[300],
-                Colors.red[300],
-                Colors.red,
-              ]),
+          color: Color(0xffba0955),
           boxShadow: [
-            BoxShadow(
-              color: Colors.grey[100],
-              spreadRadius: 7,
-              blurRadius: 4,
-              offset: Offset(0, 3),
-            ),
           ],
           borderRadius: BorderRadius.circular(40),
         ),
@@ -190,64 +145,77 @@ class SingleProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: ListTile(
-        title: Text(
-          pro_name,
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        subtitle: Text(pro_price),
-        leading: Container(
-          width: 50,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(pro_image),
-              fit: BoxFit.cover,
+    return Card(
+      child: Column(
+        children: [
+          Container(
+            alignment: Alignment.topRight,
+            child: Icon(
+              Icons.cancel,
+              color: Colors.deepOrange,
             ),
-            shape: BoxShape.circle,
           ),
-        ),
-        trailing: Container(
-          width: 70,
-          child: Row(
-            children: [
-              GestureDetector(
-                child: Container(
-                  padding: EdgeInsets.all(3),
-                  child: FaIcon(
-                    FontAwesomeIcons.plus,
-                    color: Colors.white,
-                    size: 20,
+          Container(
+            child: ListTile(
+              title: Text(
+                pro_name,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+              subtitle: Text(pro_price),
+              leading: Container(
+                width: 50,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(pro_image),
+                    fit: BoxFit.cover,
                   ),
-                  decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
+                  shape: BoxShape.circle,
                 ),
               ),
-              Expanded(
-                  child: Text(
-                pro_gty,
-                style: TextStyle(fontSize: 19),
-                textAlign: TextAlign.center,
-              )),
-              GestureDetector(
-                child: Container(
-                  padding: EdgeInsets.all(3),
-                  child: FaIcon(
-                    FontAwesomeIcons.minus,
-                    color: Colors.white,
-                    size: 20,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
+              trailing: Container(
+                width: 70,
+                child: Row(
+                  children: [
+                    GestureDetector(
+                      child: Container(
+                        padding: EdgeInsets.all(3),
+                        child: FaIcon(
+                          FontAwesomeIcons.plus,
+                          color: Colors.white,
+                          size: 20,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                        child: Text(
+                      pro_gty,
+                      style: TextStyle(fontSize: 19),
+                      textAlign: TextAlign.center,
+                    )),
+                    GestureDetector(
+                      child: Container(
+                        padding: EdgeInsets.all(3),
+                        child: FaIcon(
+                          FontAwesomeIcons.minus,
+                          color: Colors.white,
+                          size: 20,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
