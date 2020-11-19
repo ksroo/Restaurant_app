@@ -109,20 +109,74 @@ class _ShoppingState extends State<Shopping> {
         ),
       ),
       bottomNavigationBar: Container(
-        alignment: Alignment.center,
-        child: GestureDetector(
-          onTap: () {},
-          child: Text(
-            "اضافة الي السلة",
-            style: TextStyle(color: Colors.white, fontSize: 24),
-          ),
-        ),
-        height: 50.0,
-        decoration: BoxDecoration(
-          color: Color(0xffba0955),
-          boxShadow: [
+
+        height: 230.0,
+        child: Column(
+          children: [
+            Card(
+             child: Container(
+               padding: EdgeInsets.all(5),
+               child: Column(
+                 children: [
+                   Row(
+                    children: [
+                      Text("100.0"),
+                      Expanded(child: Text("")),
+                      Text("اجمالي المبلغ"),
+                    ],
+                   ),
+                   Divider(color: Colors.black,),
+                   Row(
+                     children: [
+                       Text("100.0"),
+                       Expanded(child: Text("")),
+                       Text("دليفري"),
+                     ],
+                   ),
+                   Divider(color: Colors.black,),
+                   Row(
+                     children: [
+                       Text("100.0"),
+                       Expanded(child: Text("")),
+                       Text("الاجمالي الكلي"),
+                     ],
+                   ),
+                 ],
+               ),
+             ),
+            ),
+            Container(
+              margin: EdgeInsets.only(bottom: 5),
+              alignment: Alignment.center,
+              child: GestureDetector(
+                onTap: () {},
+                child: Text(
+                  "اضافة الي السلة",
+                  style: TextStyle(color: Colors.white, fontSize: 24),
+                ),
+              ),
+              height: 50.0,
+              decoration: BoxDecoration(
+                color: Color(0xffba0955),
+                borderRadius: BorderRadius.circular(40),
+              ),
+            ),
+            Container(
+              alignment: Alignment.center,
+              child: GestureDetector(
+                onTap: () {},
+                child: Text(
+                  "تاكيد الطلبية",
+                  style: TextStyle(color: Colors.white, fontSize: 24),
+                ),
+              ),
+              height: 50.0,
+              decoration: BoxDecoration(
+                color: Color(0xffba0955),
+                borderRadius: BorderRadius.circular(40),
+              ),
+            ),
           ],
-          borderRadius: BorderRadius.circular(40),
         ),
       ),
     );
