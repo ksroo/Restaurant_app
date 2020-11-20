@@ -38,22 +38,15 @@ class _ChangePasswordState extends State<ChangePassword> {
                     children: [
                       Container(
                         child: Text(
-                          "سجل الدخول ",
+                          "تغير كلمة المرور ",
                           style: TextStyle(
                               fontSize: 25.0,
                               color: Color(0xffba0955),
                               fontWeight: FontWeight.bold),
                         ),
                       ),
-                      Container(
-                        margin: EdgeInsets.only(bottom: 30),
-                        child: Text(
-                          " الي حسابك",
-                          style: TextStyle(
-                              fontSize: 25.0,
-                              color: Color(0xffba0955),
-                              fontWeight: FontWeight.bold),
-                        ),
+                      SizedBox(
+                        height: 10,
                       ),
                       SizedBox(
                         height: 10,
@@ -66,22 +59,19 @@ class _ChangePasswordState extends State<ChangePassword> {
                           borderRadius: BorderRadius.circular(25.0),
                         ),
                         child: TextFormField(
+                          obscureText: true,
                           decoration: InputDecoration(
-                            hintText: "البريد الاكتروني",
+                            hintText: "كلمه السر الحالية",
                             border: InputBorder.none,
                           ),
                           validator: (String value) {
-                            if (value.isEmpty ||
-                                value.indexOf(".") == -1 ||
-                                value.indexOf("@") == -1) {
-                              return "الرجاء ادخال البريد الاكتروني";
+                            if (value.isEmpty || value.length < 6) {
+                              return "الرجاء ادخال كلمه السر";
                             }
                           },
                         ),
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
+                      SizedBox(height: 10,),
                       Container(
                         margin: EdgeInsets.only(left: 20, right: 20),
                         padding: EdgeInsets.only(left: 30.0, right: 30.0),
@@ -89,36 +79,38 @@ class _ChangePasswordState extends State<ChangePassword> {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(25.0),
                         ),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: TextFormField(
-                                obscureText: true,
-                                decoration: InputDecoration(
-                                  hintText: "كلمه السر",
-                                  border: InputBorder.none,
-                                ),
-                                validator: (String value) {
-                                  if (value.isEmpty || value.length < 6) {
-                                    return "الرجاء ادخال كلمه السر";
-                                  }
-                                },
-                              ),
-                            ),
-                            GestureDetector(
-                              onTap: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => ForgetPassword()));
-                              },
-                              child: Text(
-
-                                " نسيت ؟",
-                                style: TextStyle(
-                                    color: Colors.blue,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16),
-                              ),
-                            ),
-                          ],
+                        child: TextFormField(
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            hintText: "كلمة السر الجديدة",
+                            border: InputBorder.none,
+                          ),
+                          validator: (String value) {
+                            if (value.isEmpty || value.length < 6) {
+                              return "الرجاء ادخال كلمه السر";
+                            }
+                          },
+                        ),
+                      ),
+                      SizedBox(height: 10,),
+                      Container(
+                        margin: EdgeInsets.only(left: 20, right: 20),
+                        padding: EdgeInsets.only(left: 30.0, right: 30.0),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(25.0),
+                        ),
+                        child: TextFormField(
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            hintText: "تأكيد كلمة السر",
+                            border: InputBorder.none,
+                          ),
+                          validator: (String value) {
+                            if (value.isEmpty || value.length < 6) {
+                              return "الرجاء ادخال كلمه السر";
+                            }
+                          },
                         ),
                       ),
                       SizedBox(
@@ -129,13 +121,14 @@ class _ChangePasswordState extends State<ChangePassword> {
                       ),
                       MaterialButton(
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => Home()));
                         },
                         child: Container(
                             alignment: Alignment.center,
                             width: MediaQuery.of(context).size.width,
                             child: Text(
-                              "دخول",
+                              "حفظ",
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 24,
@@ -152,39 +145,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                   ),
                 ),
               ),
-              Container(
-                alignment: Alignment.center,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "اذا ليس لديك حساب سجل من هنا ؟",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Register()));
-                      },
-                      child: Text(
-                        "تسجيل جديد",
-                        style: TextStyle(
-                            color: Color(0xffba0955),
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+
             ],
           ),
         ),

@@ -141,7 +141,7 @@ class _MyProfileState extends State<MyProfile> {
                             alignment: Alignment.center,
                             width: MediaQuery.of(context).size.width,
                             child: Text(
-                              "تسجيل",
+                              "حفظ",
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 24,
@@ -154,38 +154,12 @@ class _MyProfileState extends State<MyProfile> {
                               borderRadius: BorderRadius.circular(25.0),
                             )),
                       ),
-                      Container(
-                        margin: EdgeInsets.only(top: 5),
-                        alignment: Alignment.center,
-                        child: Text(
-                          "عند الضغط علي الشروط و الاحكام انت توافق علي قوانين التطبيق",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),),
-                      ),
+
                     ],
                   ),
                 ),
               ),
-              Container(
-                alignment: Alignment.center,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "  اذا لديك حساب سجل الدخول ؟",
-                      style: TextStyle(color: Colors.black, fontSize: 16,fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(width: 20,),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
-                      },
-                      child: Text(
-                        "دخول",
-                        style: TextStyle(color: Color(0xffba0955), fontSize: 18,fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+
             ],
           ),
         ),

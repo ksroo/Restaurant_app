@@ -138,7 +138,7 @@ class _MyDrawerState extends State<MyDrawer> {
                                     fontWeight: FontWeight.bold),
                               ),
                               leading: Icon(
-                                Icons.person,
+                                Icons.lock_open,
                                 color: Color(0xffba0955),
                               ),
                               trailing: Icon(
@@ -176,6 +176,96 @@ class _MyDrawerState extends State<MyDrawer> {
                         ),
                         leading: Icon(
                           Icons.favorite,
+                          color: Color(0xffba0955),
+                        ),
+                        trailing: Icon(
+                          Icons.arrow_forward_ios,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    Divider(
+                      color: Colors.black54,
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.only(left: 10, right: 10),
+                child: Column(
+                  children: [
+                    InkWell(
+                      onTap: () {},
+                      child: ListTile(
+                        title: Text(
+                          "طلباتي",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        leading: Icon(
+                          Icons.history,
+                          color: Color(0xffba0955),
+                        ),
+                        trailing: Icon(
+                          Icons.arrow_forward_ios,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    Divider(
+                      color: Colors.black54,
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.only(left: 10, right: 10),
+                child: Column(
+                  children: [
+                    InkWell(
+                      onTap: () {},
+                      child: ListTile(
+                        title: Text(
+                          "من نحن",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        leading: Icon(
+                          Icons.message,
+                          color: Color(0xffba0955),
+                        ),
+                        trailing: Icon(
+                          Icons.arrow_forward_ios,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    Divider(
+                      color: Colors.black54,
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.only(left: 10, right: 10),
+                child: Column(
+                  children: [
+                    InkWell(
+                      onTap: () {},
+                      child: ListTile(
+                        title: Text(
+                          "مركز الدعم",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        leading: Icon(
+                          Icons.phone,
                           color: Color(0xffba0955),
                         ),
                         trailing: Icon(
