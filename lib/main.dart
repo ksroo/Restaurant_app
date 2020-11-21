@@ -26,12 +26,10 @@ class _SplashState extends State<SplashApp> {
       routeName: '/',
       navigateAfterSeconds: new GetStart(),
       title: new Text(
-        'Welcome In SplashScreen',
+        'مرحبا بكم في مطعمنا',
         style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0,color: Colors.white),
       ),
-      image: new Image.network(
-          'https://flutter.io/images/catalog-widget-placeholder.png'),
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xffba0955),
       loaderColor: Colors.red,
     );
   }
