@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_app/account/changepassword.dart';
 import 'package:restaurant_app/account/myprofile.dart';
+import 'package:restaurant_app/product/category.dart';
 
 class MyDrawer extends StatefulWidget {
   @override
@@ -59,6 +60,38 @@ class _MyDrawerState extends State<MyDrawer> {
                         ),
                         leading: Icon(
                           Icons.home,
+                          color: Color(0xffba0955),
+                        ),
+                        trailing: Icon(
+                          Icons.arrow_forward_ios,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    Divider(
+                      color: Colors.black54,
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.only(left: 10, right: 10),
+                child: Column(
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Category()));
+                      },
+                      child: ListTile(
+                        title: Text(
+                          "قائمة الطعام",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        leading: Icon(
+                          Icons.restaurant_menu,
                           color: Color(0xffba0955),
                         ),
                         trailing: Icon(
