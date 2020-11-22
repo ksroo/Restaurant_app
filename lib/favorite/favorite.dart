@@ -61,19 +61,26 @@ class _FavoriteState extends State<Favorite> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("مفضلتي",style: TextStyle( color: Colors.black),),
+        title: Text(
+          "مفضلتي",
+          style: TextStyle(color: Colors.black),
+        ),
         backgroundColor: Colors.white,
-        leading: IconButton(icon: (Icon(Icons.arrow_back_ios,color: Colors.black,)),
-          onPressed: (){
-          Navigator.of(context).pop();
-          } ,
+        leading: IconButton(
+          icon: (Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+          )),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
         ),
       ),
       body: Container(
         child: GridView.builder(
             itemCount: myarr_product.length,
-            gridDelegate:
-                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: 0.8),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2, childAspectRatio: 0.8),
             itemBuilder: (BuildContext context, int index) {
               return SingleProduct(
                 pro_id: myarr_product[index]["pro_id"],

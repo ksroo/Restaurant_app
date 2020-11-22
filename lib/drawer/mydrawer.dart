@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant_app/Order/tracking.dart';
 import 'package:restaurant_app/account/changepassword.dart';
 import 'package:restaurant_app/account/myprofile.dart';
 import 'package:restaurant_app/favorite/favorite.dart';
@@ -242,6 +243,38 @@ class _MyDrawerState extends State<MyDrawer> {
                         ),
                         leading: Icon(
                           Icons.history,
+                          color: Color(0xffba0955),
+                        ),
+                        trailing: Icon(
+                          Icons.arrow_forward_ios,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    Divider(
+                      color: Colors.black54,
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.only(left: 10, right: 10),
+                child: Column(
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Tracking()));
+                      },
+                      child: ListTile(
+                        title: Text(
+                          "تتبع الطلبية",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        leading: Icon(
+                          Icons.drive_eta,
                           color: Color(0xffba0955),
                         ),
                         trailing: Icon(
