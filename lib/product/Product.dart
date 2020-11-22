@@ -102,7 +102,9 @@ class _FoodProductState extends State<FoodProduct> {
           title: Text("بيتزا مرجريتا",style: TextStyle( color: Colors.black),),
           backgroundColor: Colors.white,
           leading: IconButton(icon: (Icon(Icons.arrow_back_ios,color: Colors.black,)),
-            onPressed: null ,
+            onPressed: (){
+              Navigator.of(context).pop();
+            } ,
           ),
         ),
         body: Container(
