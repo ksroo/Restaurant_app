@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
@@ -7,20 +8,140 @@ class Tracking extends StatefulWidget {
 }
 
 class _TrackingState extends State<Tracking> {
-  Widget  getTimeLine()
-  {
+  Widget getTimeLine() {
+    double heightCon = 70.0;
     return Container(
-      color: Colors.grey[200],
-      child: Stack(
+      color: Colors.grey[50],
+      margin: EdgeInsets.only(top: 10.0, bottom: 80),
+      child: Column(
         children: [
           Container(
-            height: 50,
+            height: heightCon,
             child: TimelineTile(
               lineXY: 0.2,
               indicatorStyle: IndicatorStyle(height: 1.0),
               alignment: TimelineAlign.manual,
               endChild: Container(
-                color: Colors.lightGreenAccent,
+                padding: EdgeInsets.all(10.0),
+                child: Row(
+                  children: [
+                    Text(
+                      "تأكيد الطلبية",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
+                    ),
+                    Icon(
+                      Icons.restaurant,
+                      color: Colors.red,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Container(
+            height: heightCon,
+            child: TimelineTile(
+              lineXY: 0.2,
+              indicatorStyle: IndicatorStyle(height: 1.0),
+              alignment: TimelineAlign.manual,
+              endChild: Container(
+                padding: EdgeInsets.all(10.0),
+                child: Row(
+                  children: [
+                    Text(
+                      "تجهيز الطلبية",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
+                    ),
+                    Icon(
+                      Icons.restaurant,
+                      color: Colors.red,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Container(
+            height: heightCon,
+            child: TimelineTile(
+              lineXY: 0.2,
+              indicatorStyle: IndicatorStyle(height: 1.0),
+              alignment: TimelineAlign.manual,
+              endChild: Container(
+                padding: EdgeInsets.all(10.0),
+                child: Row(
+                  children: [
+                    Text(
+                      "تم تجهيز الطلبية في المطعم",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
+                    ),
+                    Icon(
+                      Icons.restaurant,
+                      color: Colors.red,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Container(
+            height: heightCon,
+            child: TimelineTile(
+              lineXY: 0.2,
+              indicatorStyle: IndicatorStyle(height: 1.0),
+              alignment: TimelineAlign.manual,
+              endChild: Container(
+                padding: EdgeInsets.all(10.0),
+                child: Row(
+                  children: [
+                    Text(
+                      "الدليفري استلم الطلبية",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
+                    ),
+                    Icon(
+                      Icons.restaurant,
+                      color: Colors.red,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Container(
+            height: heightCon,
+            child: TimelineTile(
+              lineXY: 0.2,
+              indicatorStyle: IndicatorStyle(height: 1.0),
+              alignment: TimelineAlign.manual,
+              endChild: Container(
+                padding: EdgeInsets.all(10.0),
+                child: Row(
+                  children: [
+                    Text(
+                      "الدليفري قريب من المكان",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
+                    ),
+                    Icon(
+                      Icons.restaurant,
+                      color: Colors.red,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -36,7 +157,11 @@ class _TrackingState extends State<Tracking> {
           "الاسم",
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        subtitle: Text("وليد محمود",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18.0,color: Colors.black),),
+        subtitle: Text(
+          "وليد محمود",
+          style: TextStyle(
+              fontWeight: FontWeight.bold, fontSize: 18.0, color: Colors.black),
+        ),
         leading: Container(
           width: 75.0,
           decoration: BoxDecoration(
@@ -145,8 +270,24 @@ class _TrackingState extends State<Tracking> {
           getInfoDelivery(),
           getTimeLine(),
         ],
-
-
+      ),
+      bottomNavigationBar: Container(
+        child: MaterialButton(
+          onPressed: () {},
+          child: Container(
+            padding: EdgeInsets.all(5),
+            width: MediaQuery.of(context).size.width,
+            child: Text(
+              "الغاء الطلبية",
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+            ),
+            decoration: BoxDecoration(
+              color: Colors.grey[200],
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+        ),
       ),
     );
   }
