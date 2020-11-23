@@ -3,7 +3,9 @@ import 'package:restaurant_app/Order/tracking.dart';
 import 'package:restaurant_app/account/changepassword.dart';
 import 'package:restaurant_app/account/myprofile.dart';
 import 'package:restaurant_app/favorite/favorite.dart';
+import 'package:restaurant_app/home/home.dart';
 import 'package:restaurant_app/product/category.dart';
+import 'package:restaurant_app/shopping/shopping.dart';
 
 class MyDrawer extends StatefulWidget {
   @override
@@ -51,7 +53,9 @@ class _MyDrawerState extends State<MyDrawer> {
                 child: Column(
                   children: [
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+                      },
                       child: ListTile(
                         title: Text(
                           "الصفحه الرئسية",
@@ -232,7 +236,9 @@ class _MyDrawerState extends State<MyDrawer> {
                 child: Column(
                   children: [
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Shopping()));
+                      },
                       child: ListTile(
                         title: Text(
                           "طلباتي",

@@ -75,6 +75,89 @@ class _ShoppingState extends State<Shopping> {
     },
   ];
 
+  void _showSheetMessage(context) {
+    showModalBottomSheet(
+      shape: RoundedRectangleBorder (
+        borderRadius: BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15),),
+      ),
+        context: context,
+        builder: (BuildContext bc) {
+          return Container(
+            child: ListView(
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(top: 30, bottom: 30),
+                      child: Icon(
+                        Icons.done,
+                        color: Color(0xffba0955),
+                        size: 55,
+                      ),
+                    ),
+                    Text(
+                      "شكرا لطلبك",
+                      style: TextStyle(
+                          color: Color(0xffba0955),
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      "يمكنك تتبع الطلبية من خلال الضغط علي الزر في الاسفل",
+                      style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 50.0),
+                      child: MaterialButton(
+                        child: Container(
+                          margin: EdgeInsets.all(15),
+                          width: MediaQuery.of(context).size.width,
+                          child: Text(
+                            "تابع الطلبية",
+                            style: TextStyle(color: Colors.white,fontSize: 20),
+
+                            textAlign: TextAlign.center,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Color(0xffba0955),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                        ),
+                        onPressed: () {},
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 5.0),
+                      child: MaterialButton(
+                        child: Container(
+                          margin: EdgeInsets.all(15),
+                          width: MediaQuery.of(context).size.width,
+                          child: Text(
+                            "الانتقال الي المأكولات",
+                            style: TextStyle(color: Colors.black,fontSize: 20),
+
+                            textAlign: TextAlign.center,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.grey[100],
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                        ),
+                        onPressed: () {},
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -109,41 +192,44 @@ class _ShoppingState extends State<Shopping> {
         ),
       ),
       bottomNavigationBar: Container(
-
         height: 230.0,
         child: Column(
           children: [
             Card(
-             child: Container(
-               padding: EdgeInsets.all(5),
-               child: Column(
-                 children: [
-                   Row(
-                    children: [
-                      Text("100.0"),
-                      Expanded(child: Text("")),
-                      Text("اجمالي المبلغ"),
-                    ],
-                   ),
-                   Divider(color: Colors.black,),
-                   Row(
-                     children: [
-                       Text("100.0"),
-                       Expanded(child: Text("")),
-                       Text("دليفري"),
-                     ],
-                   ),
-                   Divider(color: Colors.black,),
-                   Row(
-                     children: [
-                       Text("100.0"),
-                       Expanded(child: Text("")),
-                       Text("الاجمالي الكلي"),
-                     ],
-                   ),
-                 ],
-               ),
-             ),
+              child: Container(
+                padding: EdgeInsets.all(5),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Text("100.0"),
+                        Expanded(child: Text("")),
+                        Text("اجمالي المبلغ"),
+                      ],
+                    ),
+                    Divider(
+                      color: Colors.black,
+                    ),
+                    Row(
+                      children: [
+                        Text("100.0"),
+                        Expanded(child: Text("")),
+                        Text("دليفري"),
+                      ],
+                    ),
+                    Divider(
+                      color: Colors.black,
+                    ),
+                    Row(
+                      children: [
+                        Text("100.0"),
+                        Expanded(child: Text("")),
+                        Text("الاجمالي الكلي"),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             ),
             Container(
               margin: EdgeInsets.only(bottom: 5),
@@ -164,7 +250,9 @@ class _ShoppingState extends State<Shopping> {
             Container(
               alignment: Alignment.center,
               child: GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  _showSheetMessage(context);
+                },
                 child: Text(
                   "تاكيد الطلبية",
                   style: TextStyle(color: Colors.white, fontSize: 24),
